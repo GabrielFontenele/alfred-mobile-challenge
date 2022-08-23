@@ -1,12 +1,12 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+const tintColorLight = '#2f95dc'
+const tintColorDark = '#fff'
 
 const uiColors = {
   blue200: '#e0fbfc',
   blue300: '#98c1d9',
   blue600: '#3d5a80',
   blue700: '#293241',
-  red: '#ee6c4d'
+  red: '#ee6c4d',
 }
 
 export default {
@@ -26,4 +26,4 @@ export default {
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
   },
-};
+}
