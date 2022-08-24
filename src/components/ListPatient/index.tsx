@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { FlatList } from 'react-native'
-import CardPatient from '../CardPatient'
 import { styles } from './styles'
 
 import { Text, View } from '../Themed'
+import Deletable from '../Deletable'
+import CardPatient from '../CardPatient'
 
 export interface Patient {
   id: string
@@ -21,7 +22,12 @@ export interface Patient {
   address: string
 }
 
-export default function ListPatient({ path }: { path: string }) {
+type Props = {
+  deletable?: boolean
+  onDelete?: (index: number) => void
+}
+
+export default function ListPatient({ deletable = false }: Props) {
   const [participants] = useState<Patient[]>([
     {
       id: '1',
@@ -98,14 +104,33 @@ export default function ListPatient({ path }: { path: string }) {
       nationality: 'nationality2',
       address: 'address2',
     },
+    {
+      id: '6',
+      name: {
+        title: 'title2',
+        first: 'first2',
+        last: 'last2',
+      },
+      email: 'email2',
+      image: 'image2',
+      gender: 'gender2',
+      birthday: 'birthday2',
+      phone: 'phone2',
+      nationality: 'nationality2',
+      address: 'address2',
+    },
   ])
+
+  const renderItem = deletable
+    ? ({ item }: { item: Patient }) => <Deletable patient={item} />
+    : ({ item }: { item: Patient }) => <CardPatient patient={item} />
 
   return (
     <View style={styles.container}>
       <FlatList
         data={participants}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <CardPatient patient={item} />}
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => <Text>Lista vazia</Text>}
       />

@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: '10%',
     backgroundColor: '#f6f6f6',
+    marginBottom: 20,
   },
   searchBar: {
     display: 'flex',
