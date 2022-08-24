@@ -9,11 +9,11 @@ export const styles = StyleSheet.create({
     margin: 10,
   },
   name: {
-    fontSize: 22,
+    fontSize: 20,
     paddingBottom: 5,
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     paddingVertical: 5,
   },
   textContainer: {
@@ -21,8 +21,8 @@ export const styles = StyleSheet.create({
     marginLeft: 16,
   },
   image: {
-    width: 86,
-    height: 86,
+    width: 65,
+    height: 65,
     borderRadius: 999,
     backgroundColor: '#a6a6a6',
     marginHorizontal: 16,

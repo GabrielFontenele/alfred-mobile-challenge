@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { FlatList, StyleSheet } from 'react-native'
-import CardPatient from './CardPatient'
+import { FlatList } from 'react-native'
+import CardPatient from '../CardPatient'
+import { styles } from './styles'
 
-import { Text, View } from './Themed'
+import { Text, View } from '../Themed'
 
 export interface Patient {
   id: string
@@ -52,6 +53,51 @@ export default function ListPatient({ path }: { path: string }) {
       nationality: 'nationality2',
       address: 'address2',
     },
+    {
+      id: '3',
+      name: {
+        title: 'title2',
+        first: 'first2',
+        last: 'last2',
+      },
+      email: 'email2',
+      image: 'image2',
+      gender: 'gender2',
+      birthday: 'birthday2',
+      phone: 'phone2',
+      nationality: 'nationality2',
+      address: 'address2',
+    },
+    {
+      id: '4',
+      name: {
+        title: 'title2',
+        first: 'first2',
+        last: 'last2',
+      },
+      email: 'email2',
+      image: 'image2',
+      gender: 'gender2',
+      birthday: 'birthday2',
+      phone: 'phone2',
+      nationality: 'nationality2',
+      address: 'address2',
+    },
+    {
+      id: '5',
+      name: {
+        title: 'title2',
+        first: 'first2',
+        last: 'last2',
+      },
+      email: 'email2',
+      image: 'image2',
+      gender: 'gender2',
+      birthday: 'birthday2',
+      phone: 'phone2',
+      nationality: 'nationality2',
+      address: 'address2',
+    },
   ])
 
   return (
@@ -66,13 +112,6 @@ export default function ListPatient({ path }: { path: string }) {
     </View>
   )
 }
-export const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#ffffff',
-  },
-})
 
 // function handleHelpPress() {
 //   WebBrowser.openBrowserAsync(
