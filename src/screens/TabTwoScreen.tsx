@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import EditScreenInfo from '../components/EditScreenInfo'
+import ListPatient from '../components/ListPatient'
 import { Text, View } from '../components/Themed'
 
 export default function TabTwoScreen() {
@@ -12,7 +12,7 @@ export default function TabTwoScreen() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+      <ListPatient path="/screens/TabTwoScreen.tsx" />
     </View>
   )
 }
