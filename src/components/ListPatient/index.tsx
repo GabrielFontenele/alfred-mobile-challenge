@@ -1,26 +1,12 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { styles } from './styles'
 
 import { Text, View } from '../Themed'
 import Deletable from '../Deletable'
 import CardPatient from '../CardPatient'
-
-export interface Patient {
-  id: string
-  name: {
-    title: string
-    first: string
-    last: string
-  }
-  email: string
-  image: string
-  gender: string
-  birthday: string
-  phone: string
-  nationality: string
-  address: string
-}
+import { Patient } from '../../reducers/patients/reducer'
+import { PatientsContext } from '../../contexts/PatientsContext'
 
 type Props = {
   deletable?: boolean
@@ -28,98 +14,7 @@ type Props = {
 }
 
 export default function ListPatient({ deletable = false }: Props) {
-  const [participants] = useState<Patient[]>([
-    {
-      id: '1',
-      name: {
-        title: 'title1',
-        first: 'first1',
-        last: 'last1',
-      },
-      email: 'email1',
-      image: 'image1',
-      gender: 'gender1',
-      birthday: 'birthday1',
-      phone: 'phone1',
-      nationality: 'nationality1',
-      address: 'address1',
-    },
-    {
-      id: '2',
-      name: {
-        title: 'title2',
-        first: 'first2',
-        last: 'last2',
-      },
-      email: 'email2',
-      image: 'image2',
-      gender: 'gender2',
-      birthday: 'birthday2',
-      phone: 'phone2',
-      nationality: 'nationality2',
-      address: 'address2',
-    },
-    {
-      id: '3',
-      name: {
-        title: 'title2',
-        first: 'first2',
-        last: 'last2',
-      },
-      email: 'email2',
-      image: 'image2',
-      gender: 'gender2',
-      birthday: 'birthday2',
-      phone: 'phone2',
-      nationality: 'nationality2',
-      address: 'address2',
-    },
-    {
-      id: '4',
-      name: {
-        title: 'title2',
-        first: 'first2',
-        last: 'last2',
-      },
-      email: 'email2',
-      image: 'image2',
-      gender: 'gender2',
-      birthday: 'birthday2',
-      phone: 'phone2',
-      nationality: 'nationality2',
-      address: 'address2',
-    },
-    {
-      id: '5',
-      name: {
-        title: 'title2',
-        first: 'first2',
-        last: 'last2',
-      },
-      email: 'email2',
-      image: 'image2',
-      gender: 'gender2',
-      birthday: 'birthday2',
-      phone: 'phone2',
-      nationality: 'nationality2',
-      address: 'address2',
-    },
-    {
-      id: '6',
-      name: {
-        title: 'title2',
-        first: 'first2',
-        last: 'last2',
-      },
-      email: 'email2',
-      image: 'image2',
-      gender: 'gender2',
-      birthday: 'birthday2',
-      phone: 'phone2',
-      nationality: 'nationality2',
-      address: 'address2',
-    },
-  ])
+  const { patients } = useContext(PatientsContext)
 
   const renderItem = deletable
     ? ({ item }: { item: Patient }) => <Deletable patient={item} />
@@ -128,7 +23,7 @@ export default function ListPatient({ deletable = false }: Props) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={participants}
+        data={patients}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}

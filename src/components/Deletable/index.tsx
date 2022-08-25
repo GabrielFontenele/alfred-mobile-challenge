@@ -5,8 +5,8 @@ import {
   RectButton,
   Swipeable,
 } from 'react-native-gesture-handler'
+import { Patient } from '../../reducers/patients/reducer'
 import CardPatient from '../CardPatient'
-import { Patient } from '../ListPatient'
 import { styles } from './styles'
 
 type Props = {

@@ -18,7 +18,7 @@ export default function Home({ navigation }: RootTabScreenProps<'TabOne'>) {
 
         <Ionicons name="filter-outline" size={32} style={{ paddingLeft: 16 }} />
       </View>
-      <ListPatient path="/screens/Home.tsx" />
+      <ListPatient />
     </View>
   )
 }
