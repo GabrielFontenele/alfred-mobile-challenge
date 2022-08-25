@@ -22,7 +22,6 @@ export default function CardPatient({ patient }: Props) {
   } = patient
 
   function handlerPatientPress() {
-    console.log('PatientPressHandler  called')
     setShowPatient(id)
   }
   return (
