@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
   favoritar: {
     width: '80%',
     paddingVertical: 20,
-    marginBottom: '15%',
+    marginBottom: '10%',
     borderRadius: 4,
     backgroundColor: '#212121',
     alignItems: 'center',

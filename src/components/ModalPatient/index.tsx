@@ -1,21 +1,20 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect, useState } from 'react'
-import {
-  Alert,
-  Modal,
-  Text,
-  Pressable,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native'
+import { Modal, Text, View, Image, TouchableOpacity } from 'react-native'
 import GestureRecognizer from 'react-native-swipe-gestures'
 import { PatientsContext } from '../../contexts/PatientsContext'
 import { styles } from './styles'
 
 export default function ModalPatient() {
   const [modalVisible, setModalVisible] = useState(false)
-  const { showPatient, setShowPatient } = useContext(PatientsContext)
+  const { showPatient, setShowPatient, addFavorite } =
+    useContext(PatientsContext)
+
+  function handleAddFavorite() {
+    if (showPatient) {
+      addFavorite(showPatient)
+    }
+  }
 
   let patientView = <></>
   if (showPatient) {
@@ -48,7 +47,7 @@ export default function ModalPatient() {
           <Text style={styles.text}>{street.name}</Text>
           <Text style={styles.text}>{id.value}</Text>
         </View>
-        <TouchableOpacity style={styles.favoritar}>
+        <TouchableOpacity style={styles.favoritar} onPress={handleAddFavorite}>
           <Text style={styles.textFavoritar}>Favoritar</Text>
         </TouchableOpacity>
       </>

@@ -3,20 +3,20 @@ import { FlatList } from 'react-native'
 import { styles } from './styles'
 
 import { Text, View } from '../Themed'
-import CardPatient from '../CardPatient'
+import Deletable from '../Deletable'
 import { PatientsContext } from '../../contexts/PatientsContext'
 
-export default function ListPatient() {
-  const { patients } = useContext(PatientsContext)
+export default function ListFavoritesPatient() {
+  const { favorites } = useContext(PatientsContext)
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={patients}
+        data={favorites}
         keyExtractor={(item) => {
           return item.id.value
         }}
-        renderItem={({ item }) => <CardPatient patient={item} />}
+        renderItem={({ item }) => <Deletable patient={item} />}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => <Text>Lista vazia</Text>}
       />

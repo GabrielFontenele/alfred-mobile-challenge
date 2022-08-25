@@ -62,6 +62,7 @@ export interface Patient {
 
 interface PatientsState {
   patients: Patient[]
+  favorites: Patient[]
   showPatient: Patient | null
   page: number
 }
@@ -83,6 +84,26 @@ export function patientsReducer(state: PatientsState, action: any) {
           draft.showPatient = null
         } else {
           draft.showPatient = draft.patients[currentPatientIndex]
+        }
+      })
+    }
+    case ActionTypes.ADD_FAVORITE:
+      return produce(state, (draft) => {
+        const currentFavoriteIndex = state.favorites.findIndex((patient) => {
+          return patient.id.value === action.payload.patient.id.value
+        })
+        if (currentFavoriteIndex < 0) {
+          draft.favorites.push(action.payload.patient)
+        }
+      })
+    case ActionTypes.REMOVE_FAVORITE: {
+      const currentFavoriteIndex = state.favorites.findIndex((patient) => {
+        return patient.id.value === action.payload.id
+      })
+
+      return produce(state, (draft) => {
+        if (currentFavoriteIndex >= 0) {
+          draft.favorites.splice(currentFavoriteIndex, 1)
         }
       })
     }
