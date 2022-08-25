@@ -16,24 +16,22 @@ export default function CardPatient({ patient }: Props) {
   const { setShowPatient } = useContext(PatientsContext)
   const {
     id,
-    name: { first, last, title },
+    name: { first, last },
     email,
     phone,
+    picture: { medium },
   } = patient
 
   function handlerPatientPress() {
-    setShowPatient(id)
+    setShowPatient(id.value)
   }
   return (
     <>
       <TouchableOpacity onPress={handlerPatientPress}>
         <View style={styles.container}>
-          <Image
-            style={styles.image}
-            source={require('../../assets/user.png')}
-          />
+          <Image style={styles.image} source={{ uri: medium }} />
           <View style={styles.textContainer}>
-            <Text style={styles.name}>{`${title} ${first} ${last}`}</Text>
+            <Text style={styles.name}>{`${first} ${last}`}</Text>
             <Text style={styles.text}>{email}</Text>
             <Text style={styles.text}>{phone}</Text>
           </View>

@@ -5,11 +5,12 @@ export enum ActionTypes {
   SHOW_PATIENT = 'SHOW_PATIENT',
 }
 
-export function setPatientsAction(patients: Patient[]) {
+export function setPatientsAction(patients: Patient[], refresh: boolean) {
   return {
     type: ActionTypes.SET_PATIENTS,
     payload: {
       patients,
+      refresh,
     },
   }
 }

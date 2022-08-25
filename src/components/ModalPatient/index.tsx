@@ -23,23 +23,30 @@ export default function ModalPatient() {
       name: { first, last },
       email,
       gender,
-      birthday,
+      dob,
       phone,
-      nationality,
-      address,
       id,
+      nat,
+      location: { city, state, street },
+      picture: { large },
     } = showPatient
     patientView = (
       <>
+        <Image style={styles.image} source={{ uri: large }} />
         <View style={styles.patientContent}>
           <Text style={styles.text}>{`${first} ${last}`}</Text>
           <Text style={styles.text}>{email}</Text>
-          <Text style={styles.text}>{gender}</Text>
-          <Text style={styles.text}>{birthday}</Text>
+          <Text style={styles.text}>
+            {gender === 'male' ? 'masculino' : 'feminino'}
+          </Text>
+          <Text style={styles.text}>
+            {new Date(dob.date).toLocaleDateString('pt-BR')}
+          </Text>
           <Text style={styles.text}>{phone}</Text>
-          <Text style={styles.text}>{nationality}</Text>
-          <Text style={styles.text}>{address}</Text>
-          <Text style={styles.text}>{id}</Text>
+          <Text style={styles.text}>{nat}</Text>
+          <Text style={styles.text}>{`${city} ${state} `}</Text>
+          <Text style={styles.text}>{street.name}</Text>
+          <Text style={styles.text}>{id.value}</Text>
         </View>
         <TouchableOpacity style={styles.favoritar}>
           <Text style={styles.textFavoritar}>Favoritar</Text>
@@ -72,13 +79,7 @@ export default function ModalPatient() {
             setModalVisible(!modalVisible)
           }}
         >
-          <View style={styles.modalView}>
-            <Image
-              style={styles.image}
-              source={require('../../assets/user.png')}
-            />
-            {patientView}
-          </View>
+          <View style={styles.modalView}>{patientView}</View>
         </Modal>
       </GestureRecognizer>
     </View>

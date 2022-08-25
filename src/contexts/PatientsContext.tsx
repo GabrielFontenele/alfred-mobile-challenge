@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useReducer } from 'react'
+import { api } from '../libs/api'
 import {
   setPatientsAction,
   showPatientAction,
@@ -8,8 +9,9 @@ import { Patient, patientsReducer } from '../reducers/patients/reducer'
 interface PatientsContextType {
   patients: Patient[]
   showPatient: Patient | null
-  setPatients: (patients: Patient[]) => void
+  page: number
   setShowPatient: (id: string) => void
+  fetchPatients: (refresh: boolean) => void
 }
 
 export const PatientsContext = createContext({} as PatientsContextType)
@@ -23,16 +25,19 @@ export function PatientsContextProvider({
 }: PatientsContextProviderProps) {
   const [patientsState, dispatch] = useReducer(patientsReducer, {
     patients: [],
+    page: 1,
     showPatient: null,
   })
-  const { patients, showPatient } = patientsState
-
-  function setPatients(patients: Patient[]) {
-    dispatch(setPatientsAction(patients))
-  }
+  const { patients, showPatient, page } = patientsState
 
   function setShowPatient(id: string) {
     dispatch(showPatientAction(id))
+  }
+
+  function fetchPatients(refresh: boolean) {
+    api.get(`page=${page}`).then((response) => {
+      dispatch(setPatientsAction(response.data.results, refresh))
+    })
   }
 
   return (
@@ -40,8 +45,9 @@ export function PatientsContextProvider({
       value={{
         patients,
         showPatient,
-        setPatients,
+        page,
         setShowPatient,
+        fetchPatients,
       }}
     >
       {children}
