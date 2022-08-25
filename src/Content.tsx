@@ -12,7 +12,7 @@ export default function Content() {
   const { fetchPatients } = useContext(PatientsContext)
 
   useEffect(() => {
-    fetchPatients(false)
+    fetchPatients(true)
   }, [])
 
   return (

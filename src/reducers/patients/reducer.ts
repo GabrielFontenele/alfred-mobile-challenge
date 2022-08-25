@@ -71,7 +71,11 @@ export function patientsReducer(state: PatientsState, action: any) {
   switch (action.type) {
     case ActionTypes.SET_PATIENTS:
       return produce(state, (draft) => {
-        draft.patients = action.payload.patients
+        if (action.payload.refresh) {
+          draft.patients = action.payload.patients
+        } else {
+          draft.patients.push(...action.payload.patients)
+        }
         draft.page = action.payload.refresh ? 1 : draft.page + 1
       })
     case ActionTypes.SHOW_PATIENT: {

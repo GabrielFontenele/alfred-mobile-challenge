@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useReducer } from 'react'
+import { createContext, ReactNode, useReducer, useState } from 'react'
 import { api } from '../libs/api'
 import {
   addFavoriteAction,
@@ -35,15 +35,21 @@ export function PatientsContextProvider({
     showPatient: null,
   })
   const { patients, favorites, showPatient, page } = patientsState
+  const [loading, setLoading] = useState(false)
 
   function setShowPatient(id: string) {
     dispatch(showPatientAction(id))
   }
 
   function fetchPatients(refresh: boolean) {
-    api.get(`page=${page}`).then((response) => {
-      dispatch(setPatientsAction(response.data.results, refresh))
-    })
+    if (!loading) {
+      const fetchPage = refresh ? 1 : page + 1
+      setLoading(true)
+      api.get(`&page=${fetchPage}`).then((response) => {
+        dispatch(setPatientsAction(response.data.results, refresh))
+        setLoading(false)
+      })
+    }
   }
   function addFavorite(patient: Patient) {
     dispatch(addFavoriteAction(patient))
