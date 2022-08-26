@@ -4,5 +4,7 @@ React native app that uses the [Random user api](https://randomuser.me/) to list
 ### Language, framework and technologies used
 - Typescript
 - React Native
+- Expo Managed Workflow
 
+>  [Alfred Mobile Challenge 🏅 2022](https://github.com/Alfredctba/alfred-mobile-challenge)
 >  This is a challenge by [Coodesh](https://coodesh.com/)
