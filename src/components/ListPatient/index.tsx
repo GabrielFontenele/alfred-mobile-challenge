@@ -13,6 +13,10 @@ export default function ListPatient() {
     fetchPatients(false)
   }
 
+  function handleRefresh() {
+    fetchPatients(true)
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -22,7 +26,8 @@ export default function ListPatient() {
         }}
         renderItem={({ item }) => <CardPatient patient={item} />}
         showsVerticalScrollIndicator={false}
-        ListEmptyComponent={() => <Text>Lista vazia</Text>}
+        refreshing={false}
+        onRefresh={handleRefresh}
         ListFooterComponent={() => (
           <ActivityIndicator
             size="large"
