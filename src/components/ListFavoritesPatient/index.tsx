@@ -18,7 +18,6 @@ export default function ListFavoritesPatient() {
         }}
         renderItem={({ item }) => <Deletable patient={item} />}
         showsVerticalScrollIndicator={false}
-        ListEmptyComponent={() => <Text>Lista vazia</Text>}
       />
     </View>
   )

@@ -6,5 +6,17 @@ React native app that uses the [Random user api](https://randomuser.me/) to list
 - React Native
 - Expo Managed Workflow
 
+### Setup
+
+```
+npm i
+```
+```
+npm run start 
+```
+
+
+https://www.loom.com/embed/99653455dba145a4ab82d0ca72116016
+
 >  [Alfred Mobile Challenge 🏅 2022](https://github.com/Alfredctba/alfred-mobile-challenge)
 >  This is a challenge by [Coodesh](https://coodesh.com/)

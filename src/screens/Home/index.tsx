@@ -27,7 +27,7 @@ export default function Home({ navigation }: RootTabScreenProps<'TabOne'>) {
           <TextInput
             style={styles.input}
             placeholder="filtrar nome"
-            onChangeText={setSearchBarValue}
+            onChangeText={setQuery}
             onSubmitEditing={handleSearchSubmit}
           />
 
