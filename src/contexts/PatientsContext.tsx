@@ -45,10 +45,15 @@ export function PatientsContextProvider({
     if (!loading) {
       const fetchPage = refresh ? 1 : page + 1
       setLoading(true)
-      api.get(`&page=${fetchPage}`).then((response) => {
-        dispatch(setPatientsAction(response.data.results, refresh))
-        setLoading(false)
-      })
+      api
+        .get(`&page=${fetchPage}`)
+        .then((response) => {
+          dispatch(setPatientsAction(response.data.results, refresh))
+          setLoading(false)
+        })
+        .catch(() => {
+          setLoading(false)
+        })
     }
   }
   function addFavorite(patient: Patient) {
